@@ -48,5 +48,5 @@ python manage.py runserver
 Uso del Proyecto
 El backend de este proyecto gestiona las siguientes funcionalidades:
 
-Enviar un comentario: Los usuarios pueden enviar comentarios, que se almacenan en el LocalStorage y se envían al servidor para su almacenamiento persistente.
+Enviar un comentario: Los usuarios pueden enviar comentarios, que se almacenan en el LocalStorage y se envían al servidor para su almacenamiento persistente.\
 Recuperar comentarios: Los comentarios guardados se pueden recuperar desde el backend, lo que permite a los usuarios ver mensajes previos.
