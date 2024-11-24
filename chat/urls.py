@@ -9,4 +9,3 @@ urlpatterns =[
     path("authors/<str:username>/", view=views.get_author_by_username, name="get-author-by-username")
 ]
 
-""" FALTA HACER COMIT """
