@@ -12,4 +12,4 @@ class MessageSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
     class Meta:
         model = Message
-        fields = "__all__"
+        fields = ['id', 'author', 'content', 'attachment', 'created_at']

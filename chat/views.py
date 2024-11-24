@@ -15,15 +15,21 @@ def get_messages(request):
 def create_message(request):
     username = request.data.get("username")
     content = request.data.get("content")
+    attachment = request.FILES.get("attachment")  # Capturar el archivo adjunto
 
-    if not username or not content:
+    # Validar que haya al menos un campo proporcionado (content o attachment)
+    if not username or (not content and not attachment):
         return Response(
-            {"error": "Los campos son requeridos."},
+            {"error": "Se requiere al menos contenido o un archivo adjunto."},
             status=status.HTTP_400_BAD_REQUEST
         )
 
+    # Obtener o crear el autor
     author, _ = Author.objects.get_or_create(name=username)
-    serializer = MessageSerializer(data={"content": content})
+
+    # Crear el mensaje con el contenido y/o archivo adjunto
+    message_data = {"content": content, "attachment": attachment}
+    serializer = MessageSerializer(data=message_data)
 
     if serializer.is_valid():
         serializer.save(author=author)
